@@ -1,5 +1,7 @@
 package com.luv2code.hubernatecrud;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,8 +25,34 @@ public class HubernatecrudApplication {
 			
 			//createMultipleStudent(studentDAO);
 			
-			readStudent(studentDAO);
+			//readStudent(studentDAO);
+			
+			//queryForStudent(studentDAO);
+			
+			findUserByLastName(studentDAO);
 		};
+	}
+
+	private void findUserByLastName(StudentDAO studentDAO) {
+		// TODO Auto-generated method stub
+		
+		List<Student> theStudents = studentDAO.findByLastName("Sutar");
+		
+		for(Student tempStudent: theStudents) {
+			System.out.println(tempStudent);
+		}
+		
+	}
+
+	private void queryForStudent(StudentDAO studentDAO) {
+		// TODO Auto-generated method stub
+		
+		List<Student> theStudents = studentDAO.findAll();
+		
+		for(Student students: theStudents) {
+			System.out.println(students);
+		}
+		
 	}
 
 	private void readStudent(StudentDAO studentDAO) {
