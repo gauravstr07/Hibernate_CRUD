@@ -18,10 +18,32 @@ public class HubernatecrudApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
+			
 			//createStudent(studentDAO);
 			
-			createMultipleStudent(studentDAO);
+			//createMultipleStudent(studentDAO);
+			
+			readStudent(studentDAO);
 		};
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+		// TODO Auto-generated method stub
+		
+		Student tempStudent = new Student("Gaurav", "Sutar", "gauravstr05@gmail.com");
+		
+		System.out.println("Saving the student...");
+		studentDAO.save(tempStudent);
+		
+		int theId = tempStudent.getId();
+		
+		Student myStudent = studentDAO.findById(theId);
+		System.out.println("Found the Student : " + myStudent.toString());
+		
+		
+		
+		
+		
 	}
 
 	private void createMultipleStudent(StudentDAO studentDAO) {
